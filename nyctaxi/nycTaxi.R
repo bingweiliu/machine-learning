@@ -18,7 +18,7 @@ library(GGally)
 library(forecast)
 library(pso)
 
-RawData <- read.table("E:/Dropbox/2015/DataIncubator/machine_learning_data.csv", header = TRUE, sep=",",
+RawData <- read.table("E:/machine_learning_data.csv", header = TRUE, sep=",",
                       colClasses= c("numeric","factor","factor","factor", "numeric","numeric","numeric","numeric"))
 names(RawData) <- c("day_of_month", "day_of_week","hour_of_day", "grid_index", "num_trips","avg_distance","avg_num_passenger", "std_num_passenger")
 hist(RawData$avg_distance)
@@ -88,7 +88,7 @@ svmTrain <- function(parameter,trainingData, testingData, acc){
 svmP <- psoptim(par=c(1,0.01),fn = svmTrain, lower=c(0.01,0.0001), upper=c(100000000,1000), trainingData = training_sample, testingData=testingSTData_raw, 
                 acc= pso_accuracy, control=list(maxit.stagnate = 5,trace=TRUE, REPORT=1, maxit= 50))
 
-PSO <- read.table("C:/Users/bzheng6/Desktop/Bichen/NYCTaxi/Book1.csv",  sep=",",
+PSO <- read.table("C:/Users/bingweiliu/Desktop/NYCTaxi/Book1.csv",  sep=",",
                   colClasses= c("numeric"))
 
-write.csv(testingData_Output, file = "C:/Users/bzheng6/Desktop/Bichen/NYCTaxi/nycTaxi_Predictions.csv")
+write.csv(testingData_Output, file = "C:/Users/bingweiliu/Desktop/bingweiliu/NYCTaxi/nycTaxi_Predictions.csv")
